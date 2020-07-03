@@ -1,0 +1,19 @@
+version: "3"
+services: 
+    webapp:
+        build: .
+        ports: 
+            - "8080:8080"
+        links:
+            - db
+    db:
+        container_name: mysql-db
+        image: mysql:5.7.26
+        ports:
+            - "3306:3306"   
+        volumes:   
+            - ~/datadir_mysql:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_USER=root
+            - MYSQL_DATABASE=barcamp
