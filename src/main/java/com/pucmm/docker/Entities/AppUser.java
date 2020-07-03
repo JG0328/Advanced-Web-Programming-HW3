@@ -2,30 +2,30 @@ package com.pucmm.docker.Entities;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @EnableAutoConfiguration
 public class AppUser implements Serializable {
     @Id
     private Long id;
-    private String name;
     private String username;
     private String password;
     private Boolean active;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<AppRole> appRoles;
 
     public AppUser() {
 
     }
 
-    public AppUser(Long id, String name, String username, String password, Boolean active) {
-        this.id = id;
-        this.name = name;
+    public AppUser(String username, String password, Boolean active, Set<AppRole> appRoles) {
         this.username = username;
         this.password = password;
         this.active = active;
+        this.appRoles = appRoles;
     }
 
     public Long getId() {
@@ -34,14 +34,6 @@ public class AppUser implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUsername() {
@@ -66,5 +58,13 @@ public class AppUser implements Serializable {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public Set<AppRole> getAppRoles() {
+        return appRoles;
+    }
+
+    public void setAppRoles(Set<AppRole> appRoles) {
+        this.appRoles = appRoles;
     }
 }
