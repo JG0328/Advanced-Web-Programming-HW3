@@ -2,7 +2,6 @@ package com.pucmm.docker.Config;
 
 import com.pucmm.docker.Services.CustomUserDetailsServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,17 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/css/**", "/js/**", "/actuator/**").permitAll()
                 .antMatchers("/dbconsole/**").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/barcamp/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.POST, "/**").permitAll()
-                .antMatchers(HttpMethod.PUT, "/barcamp/**").permitAll()
-                .antMatchers(HttpMethod.PATCH, "/barcamp/**").permitAll()
+                .antMatchers("/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/form")
                 .permitAll()
                 .and()
                 .logout()
+                .logoutUrl("/logout")
                 .permitAll();
     }
 }
