@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services: 
     webapp:
         build: .
@@ -11,9 +11,14 @@ services:
         image: mysql:5.7.26
         ports:
             - "3306:3306"
-        volumes:   
-            - ~/datadir_mysql:/var/lib/mysql
+        volumes:  
+            - type: volume
+              source: data
+              target: /var/lib/mysql
         environment:
             - MYSQL_USER=root
             - MYSQL_ROOT_PASSWORD=123456 
             - MYSQL_DATABASE=barcamp
+
+volumes:
+    data:
