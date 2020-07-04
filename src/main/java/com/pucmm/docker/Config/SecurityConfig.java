@@ -26,19 +26,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/css/**", "/js/**", "/actuator/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/actuator/**", "/favicon.ico").permitAll()
                 .antMatchers("/dbconsole/**").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/**").hasAnyRole("ADMIN", "USER")
-                .anyRequest().permitAll()
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/barcamp/**").hasAnyAuthority("ADMIN", "USER")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/form")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .permitAll();
+                .formLogin();
+//                .anyRequest().permitAll();
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/form")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .permitAll();
     }
 }
