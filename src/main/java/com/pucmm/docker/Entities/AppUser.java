@@ -10,7 +10,8 @@ import java.util.Set;
 @EnableAutoConfiguration
 public class AppUser implements Serializable {
     @Id
-    private Long id;
+    @GeneratedValue
+    private int id;
     private String username;
     private String password;
     private Boolean active;
@@ -28,11 +29,11 @@ public class AppUser implements Serializable {
         this.appRoles = appRoles;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
