@@ -7,7 +7,7 @@
 ` $ docker-compose build `
 ` $ docker-compose up `
 
-## Run without Docker (Intellij)
+## Run without Docker Compose (Development - Intellij)
 
 1. Create the DB
 `docker container run -d -p "3306:3306" -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=barcamp  --mount type=volume,src=data,target=/var/lib/mysql --name mysql-db mysql:5.7.26`
