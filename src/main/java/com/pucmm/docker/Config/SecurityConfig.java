@@ -30,9 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/js/**", "/actuator/**", "/favicon.ico").permitAll()
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/**/").hasAnyAuthority("ADMIN", "USER")
-                .antMatchers(HttpMethod.POST, "/**/")
-                .permitAll()
+                .antMatchers(HttpMethod.POST, "/**/").hasAnyAuthority("ADMIN", "USER")
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .cors().and()
+                .csrf().disable();
     }
 }

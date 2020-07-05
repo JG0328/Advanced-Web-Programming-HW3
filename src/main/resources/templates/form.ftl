@@ -10,7 +10,7 @@
 
 
     <body>
-        <form method="get" action="/form" class="survey-container">
+        <form method="post" action="/form" class="survey-container">
             <h3>Encuesta Barcamp</h3>
             <br/>
             <div>

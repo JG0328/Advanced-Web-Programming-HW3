@@ -20,7 +20,7 @@ public class FormsController {
         return model;
     }
 
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    @RequestMapping(value = "/form", method = RequestMethod.POST)
     public ModelAndView submitForm(
             @RequestParam("question-1") int first,
             @RequestParam("question-2") int second,
