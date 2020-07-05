@@ -1,24 +1,37 @@
 package com.pucmm.docker.Controllers;
 
+import com.pucmm.docker.Entities.Form;
+import com.pucmm.docker.Services.FormsServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(path = "/")
 public class FormsController {
+    @Autowired
+    FormsServices formsServices;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView indexClients() {
+    public ModelAndView indexForm() {
         ModelAndView model = new ModelAndView();
-        model.addObject("clients", "");
         model.setViewName("form");
         return model;
     }
 
+    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    public ModelAndView submitForm(
+            @RequestParam("question-1") int first,
+            @RequestParam("question-2") int second,
+            @RequestParam("question-3") int third,
+            @RequestParam("comment") String comment
+    ) {
+        formsServices.saveForm(new Form(first, second, third, comment));
+        ModelAndView model = new ModelAndView();
+        model.setViewName("thanks");
+        return model;
+    }
 }
 
 

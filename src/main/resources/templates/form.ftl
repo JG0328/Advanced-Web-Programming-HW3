@@ -10,7 +10,7 @@
 
 
     <body>
-        <form method="POST" action="/form" class="survey-container">
+        <form method="get" action="/form" class="survey-container">
             <h3>Encuesta Barcamp</h3>
             <br/>
             <div>
@@ -88,7 +88,7 @@
             <div>
                 <h5>¿Tiene algún comentario para los organizadores?</h5>
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
