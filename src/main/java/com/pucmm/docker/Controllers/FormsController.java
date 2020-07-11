@@ -21,13 +21,18 @@ public class FormsController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public ModelAndView submitForm(
+    public String submitForm(
             @RequestParam("question-1") int first,
             @RequestParam("question-2") int second,
             @RequestParam("question-3") int third,
             @RequestParam("comment") String comment
     ) {
         formsServices.saveForm(new Form(first, second, third, comment));
+        return "redirect:/thanks";
+    }
+
+    @RequestMapping(value = "/thanks", method = RequestMethod.GET)
+    public ModelAndView indexThanks() {
         ModelAndView model = new ModelAndView();
         model.setViewName("thanks");
         return model;
