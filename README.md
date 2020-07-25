@@ -1,6 +1,6 @@
 ## Run with Docker Compose
 
-##### 1. Create jar image
+##### 1. Create a jar image
 
 - ` $ ./gradlew task bootjar `
 
