@@ -2,7 +2,7 @@
 
 ##### 1. Create jar image
 
-- ` $ ./gradlew taskrun bootjar `
+- ` $ ./gradlew task bootjar `
 
 ##### 2. Build and Run containers
 
