@@ -20,8 +20,8 @@
 
 ## Docs
 Credentials
-User:     admin
-Password: admin
+- User:     admin
+- Password: admin
 
 
 http://localhost:8080/  ( Encuesta )
