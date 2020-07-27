@@ -19,6 +19,11 @@
 
 
 ## Docs
+Credentials
+User:     admin
+Password: admin
+
+
 http://localhost:8080/  ( Encuesta )
 
 http://localhost:8080/admin  ( Informacion sobre las respuestas - SOLO ADMINS )
